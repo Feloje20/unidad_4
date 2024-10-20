@@ -20,3 +20,19 @@
     }
     // Mostramos la cookie
     echo "Has visitado la página " + $_COOKIE["galleta_contadora"] + " veces";
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="ver_codigo">
+        <button type="button"><a href="https://github.com/Feloje20/unidad_4/blob/main/cookies/ej_04.php">Ver código</a></button>
+    </div> 
+</body>
+</html>
