@@ -18,34 +18,30 @@ $puzles[] = ["piezas/d1.JPG", "piezas/d2.JPG"];
 $puzles[] = ["piezas/e1.JPG", "piezas/e2.JPG"];
 $puzles[] = ["piezas/f1.JPG", "piezas/f2.JPG"];
 
-// Si no existe la variable de sesión, la creamos
-if (!isset($_SESSION['usuario'])) {
-    $_SESSION['usuario'] = "";
+// Inicializamos los índices de las imágenes si no están definidos
+if (!isset($_SESSION['puzle_index1']) || !isset($_SESSION['puzle_index2'])) {
+    $_SESSION['puzle_index1'] = random_int(0, count($puzles) - 1);
+    $_SESSION['puzle_index2'] = random_int(0, count($puzles) - 1);
 }
 
-// Inicializamos los índices de las imágenes si no están definidos
-if (!isset($_SESSION['puzle_index1'])) {
+// Si el usuario ha presionado el botón de reiniciar, randomizamos los índices
+if (isset($_POST['reiniciar'])) {
     $_SESSION['puzle_index1'] = random_int(0, count($puzles) - 1);
-}
-if (!isset($_SESSION['puzle_index2'])) {
-    $_SESSION['puzle_index2'] = random_int(0, count($puzles) - 1);;
+    $_SESSION['puzle_index2'] = random_int(0, count($puzles) - 1);
 }
 
 // Si se ha pulsado un botón, incrementamos el índice correspondiente
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['imagen1'])) {
-        $_SESSION['puzle_index1'] = ($_SESSION['puzle_index1'] + 1) % count($puzles);
-    } elseif (isset($_POST['imagen2'])) {
-        $_SESSION['puzle_index2'] = ($_SESSION['puzle_index2'] + 1) % count($puzles);
-    }
-    
+if (isset($_POST['imagen1'])) {
+    $_SESSION['puzle_index1'] = ($_SESSION['puzle_index1'] + 1) % count($puzles);
+} elseif (isset($_POST['imagen2'])) {
+    $_SESSION['puzle_index2'] = ($_SESSION['puzle_index2'] + 1) % count($puzles);
 }
 
 // Comprobamos si la resolución del puzle es correcta al presionar el botón "resolver"
 if (isset($_POST["resolver"])) {
     $current_index1 = $_SESSION['puzle_index1'];
     $current_index2 = $_SESSION['puzle_index2'];
-    if ($current_index1 == $current_index2) {
+    if ($current_index1 === $current_index2) {
         $resolucion =  "<p>¡Enhorabuena! Has resuelto el puzle.</p><br/>";
     } else {
         $resolucion = "<p>Lo siento, no has resuelto el puzle.</p><br/>";
@@ -74,7 +70,8 @@ $current_index2 = $_SESSION['puzle_index2'];
         <button name="imagen2">
             <img src="<?php echo $puzles[$current_index2][1]; ?>" alt="imagen2" width="100" height="100">
         </button><br/>
-        <input type="submit" name="resolver"><br/>
+        <input type="submit" name="resolver" value="resolver"><br/>
+        <input type="submit" name="reiniciar" value ="reiniciar"><br/>
     </form>
     <?php echo $resolucion; ?>
     </br><a href="cierre2.php">cerrar sesión</a>
