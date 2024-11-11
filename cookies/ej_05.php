@@ -28,7 +28,7 @@ if (isset($_COOKIE["tiempo"])){
     <h1>Tiempo desde la última visita con cookies</h1>
     <p><?php echo $tiempo_transcurrido ?></p>
     <div class="ver_codigo">
-        <button type="button"><a href="https://github.com/Feloje20/unidad_4/blob/main/cookies/ej_02.php">Ver código</a></button>
+        <button type="button"><a href="https://github.com/Feloje20/unidad_4/blob/main/cookies/ej_05.php">Ver código</a></button>
     </div> 
 </body>
 </html>

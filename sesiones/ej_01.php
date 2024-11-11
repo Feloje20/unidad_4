@@ -87,7 +87,7 @@ $data = $_SESSION["contacts"];
     ?>
     </br><a href="cierre.php">cerrar sesión</a>
     <div class="ver_codigo">
-        <button type="button"><a href="">Ver código</a></button>
+        <button type="button"><a href="https://github.com/Feloje20/unidad_4/blob/main/sesiones/ej_01.php">Ver código</a></button>
     </div> 
 </body>
 </html>
