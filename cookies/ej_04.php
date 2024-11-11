@@ -19,7 +19,7 @@
         setcookie("galleta_contadora", $_COOKIE["galleta_contadora"] + 1 , time()+120);
     }
     // Mostramos la cookie
-    echo "Has visitado la página " + $_COOKIE["galleta_contadora"] + " veces";
+    echo "Has visitado la página " . $_COOKIE["galleta_contadora"] . " veces";
 
 ?>
 
