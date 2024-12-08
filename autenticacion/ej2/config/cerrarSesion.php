@@ -5,5 +5,5 @@ session_unset();
 
 session_destroy();
 
-header("location:../ej1.php");
+header("location:../ej2.php");
 ?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Ejercicio de autentificación con login de usuario para mostrar vistas públicas y privadas.
+ * Adición: Secciones en función del tipo de login, admin o usuario normal.
  * @autho Jesús Ferrer López
  * @date 08/12/2024
  */
@@ -10,8 +10,11 @@
  $usuario = "";
  $password = "";
  $error = "";
-
+ 
  session_start();
+ if (isset($_SESSION["usuario"])) {
+     $auth = true;
+ }
 
  if (isset($_POST["enviar"])) {
     $usuario = clearData($_POST["usuario"]);
@@ -22,6 +25,7 @@
         if ($usuario === $user[0] && $password === $user[1]) {
             $auth = true;
             $_SESSION["usuario"] = $usuario;
+            $_SESSION["tipo"] = $user[2];
             break;
         }
     }
@@ -41,7 +45,7 @@
     <title>ej1 autentificacion</title>
 </head>
 <body>
-    <h1>Ejercicio 1 de autentificación</h1>
+    <h1>Ejercicio 2 de autentificación</h1>
     <?php 
         if (!$auth) {
     ?>
@@ -56,11 +60,19 @@
     <?php
         } else {
             echo "<h2>Bienvenido " . $_SESSION["usuario"] . "</h2>";
-    ?>
-        <h3>Zona privada</h3>
-        
-        <p>Esto es una zona privada, significa que te has logeado con éxito.</p>
-    <?php
+            // Si el usuario logeado es admin, le mostramos la sección de administrador.
+            if ($_SESSION["tipo"] === "admin") {
+                echo "<h3>Zona de ADMINISTRACIÓN</h3>";
+                echo "<p>Esta sección solo está disponible para el administrador.</p>";
+                echo "<a href='./vista/admin.php'>Vista de admin</a>";
+            } 
+            
+            // Si el usuario logeado es un usuario normal, le mostramos la sección de usuario.
+            if ($_SESSION["tipo"] === "user" || $_SESSION["tipo"] === "admin") {
+                echo "<h3>Zona de USUARIO</h3>";
+                echo "<p>Esta sección solo está disponible para los usuarios y el admin.</p>";
+                echo "<a href='./vista/usuario.php'>Vista de usuario</a>";
+            }
         }
     ?>
     <h3>Zona pública</h3>
@@ -70,5 +82,6 @@
             echo "<a href='./config/cerrarSesion.php'>Cerrar sesión</a>";
         }
     ?>
+    <a href="https://github.com/Feloje20/unidad_4/blob/main/autenticacion/ej2/ej2.php">Ver código</a>
 </body>
 </html>

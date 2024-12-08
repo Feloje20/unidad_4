@@ -5,7 +5,7 @@
  * @date 08/12/2024
  */
 
- $users = [["usuario", "password"], ["admin", "12345"], ["pepe", "pepa"]];
+ $users = [["usuario", "password", "user"], ["admin", "12345", "admin"], ["pepe", "pepa", "user"]];
 
 function clearData($cadena) {
     $cadena = trim($cadena);

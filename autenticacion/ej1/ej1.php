@@ -70,5 +70,6 @@
             echo "<a href='./config/cerrarSesion.php'>Cerrar sesión</a>";
         }
     ?>
+    <a href="https://github.com/Feloje20/unidad_4/blob/main/autenticacion/ej1/ej1.php">Ver código</a>
 </body>
 </html>
