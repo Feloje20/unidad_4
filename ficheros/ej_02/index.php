@@ -35,6 +35,6 @@ if (is_dir('images')) {
 
     <br>
     <a href="admin.php">Gestión de imágenes</a><br/>
-    <a href="https://github.com/Feloje20/unidad_4/tree/main/sesiones/ej_02">Ver código</a>
+    <a href="https://github.com/Feloje20/unidad_4/tree/main/ficheros/ej_02">Ver código</a>
 </body>
 </html>
